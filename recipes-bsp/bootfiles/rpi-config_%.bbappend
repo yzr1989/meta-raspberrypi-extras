@@ -1,5 +1,8 @@
 # Check overclocking settings before running
 RPI_ENABLE_MANUAL_OVERCLOCKING ?= "0"
+
+RPI_OC_FORCE_TURBO ?= "0"
+
 RPI_OC_OVER_VOLTAGE ?= "0"
 RPI_OC_ARM_FREQ ?= "0"
 RPI_OC_GPU_FREQ ?= "0"
@@ -64,11 +67,13 @@ do_deploy_append() {
         [ "${RPI_OC_OVER_VOLTAGE}" != "0" ] && echo "over_voltage=${RPI_OC_OVER_VOLTAGE}" >> ${configfile}
         [ "${RPI_OC_ARM_FREQ}" != "0" ] && echo "arm_freq=${RPI_OC_ARM_FREQ}" >> ${configfile}
         [ "${RPI_OC_GPU_FREQ}" != "0" ] && echo "gpu_freq=${RPI_OC_GPU_FREQ}" >> ${configfile}
+        [ "${RPI_OC_FORCE_TURBO}" == "1" ] && echo "force_turbo=1" >> ${configfile}
         echo >> ${configfile}
     else
         [ "${RPI_OC_OVER_VOLTAGE}" != "0" ] && bbwarn "using RPI_OC_OVER_VOLTAGE without RPI_ENABLE_MANUAL_OVERCLOCKING enabled, ignoring..."
         [ "${RPI_OC_ARM_FREQ}" != "0" ] && bbwarn "using RPI_OC_ARM_FREQ without RPI_ENABLE_MANUAL_OVERCLOCKING enabled, ignoring..."
         [ "${RPI_OC_GPU_FREQ}" != "0" ] && bbwarn "using RPI_OC_GPU_FREQ without RPI_ENABLE_MANUAL_OVERCLOCKING enabled, ignoring..."
+        [ "${RPI_OC_FORCE_TURBO}" == "1" ] && bbwarn "enabled RPI_OC_FORCE_TURBO without RPI_ENABLE_MANUAL_OVERCLOCKING enabled, ignoring..."
         true
     fi
 }
