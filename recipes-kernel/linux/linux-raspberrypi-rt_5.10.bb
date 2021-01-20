@@ -1,5 +1,5 @@
 require linux-raspberrypi-5.10.inc
 require linux-raspberrypi-common-rt.inc
 
-SRC_URI += "http://cdn.kernel.org/pub/linux/kernel/projects/rt/5.10/patch-5.10.4-rt22.patch.gz"
-SRC_URI[sha256sum] = "77a6d9aad676452010f891728713c5ff2bae503e574b2ff51645d674af9e2c08"
+SRC_URI += "https://cdn.kernel.org/pub/linux/kernel/projects/rt/5.10/older/patch-5.10.8-rt24.patch.gz"
+SRC_URI[sha256sum] = "c772f6b1276ea4e150bb9bb9e8288cc16d1f9d4a191731506edf0f9b1e588520"
