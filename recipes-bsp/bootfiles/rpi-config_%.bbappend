@@ -1,6 +1,8 @@
 # Check overclocking settings before running
 RPI_ENABLE_MANUAL_OVERCLOCKING ?= "0"
 
+RPI_OC_INITIAL_TURBO ?= "0"
+
 RPI_OC_FORCE_TURBO ?= "0"
 
 RPI_OC_OVER_VOLTAGE ?= "0"
@@ -60,7 +62,8 @@ do_deploy_append() {
         [ "${RPI_OC_OVER_VOLTAGE_SDRAM_P}" != "0" ] && write_cfg "over_voltage_sdram_p=${RPI_OC_OVER_VOLTAGE_SDRAM_P}"
         [ "${RPI_OC_OVER_VOLTAGE_SDRAM_I}" != "0" ] && write_cfg "over_voltage_sdram_i=${RPI_OC_OVER_VOLTAGE_SDRAM_I}"
         [ "${RPI_OC_OVER_VOLTAGE_SDRAM_C}" != "0" ] && write_cfg "over_voltage_sdram_c=${RPI_OC_OVER_VOLTAGE_SDRAM_C}"
-        [ "${RPI_OC_FORCE_TURBO}" == "1" ] && write_cfg "force_turbo=1"
+        [ "${RPI_OC_INITIAL_TURBO}" != "0" ] && write_cfg "initial_turbo=${RPI_OC_INITIAL_TURBO}"
+        [ "${RPI_OC_FORCE_TURBO}" = "1" ] && write_cfg "force_turbo=1"
     else
         [ "${RPI_OC_OVER_VOLTAGE}" != "0" ] && bbwarn "using RPI_OC_OVER_VOLTAGE without RPI_ENABLE_MANUAL_OVERCLOCKING enabled, ignoring..."
         [ "${RPI_OC_ARM_FREQ}" != "0" ] && bbwarn "using RPI_OC_ARM_FREQ without RPI_ENABLE_MANUAL_OVERCLOCKING enabled, ignoring..."
@@ -70,7 +73,8 @@ do_deploy_append() {
         [ "${RPI_OC_OVER_VOLTAGE_SDRAM_P}" != "0" ] && bbwarn "using RPI_OC_OVER_VOLTAGE_SDRAM_P without RPI_ENABLE_MANUAL_OVERCLOCKING enabled, ignoring..."
         [ "${RPI_OC_OVER_VOLTAGE_SDRAM_I}" != "0" ] && bbwarn "using RPI_OC_OVER_VOLTAGE_SDRAM_I without RPI_ENABLE_MANUAL_OVERCLOCKING enabled, ignoring..."
         [ "${RPI_OC_OVER_VOLTAGE_SDRAM_C}" != "0" ] && bbwarn "using RPI_OC_OVER_VOLTAGE_SDRAM_C without RPI_ENABLE_MANUAL_OVERCLOCKING enabled, ignoring..."
-        [ "${RPI_OC_FORCE_TURBO}" == "1" ] && bbwarn "enabled RPI_OC_FORCE_TURBO without RPI_ENABLE_MANUAL_OVERCLOCKING enabled, ignoring..."
+        [ "${RPI_OC_INITIAL_TURBO}" != "0" ] && bbwarn "enabled RPI_OC_INITIAL_TURBO without RPI_ENABLE_MANUAL_OVERCLOCKING enabled, ignoring..."
+        [ "${RPI_OC_FORCE_TURBO}" = "1" ] && bbwarn "enabled RPI_OC_FORCE_TURBO without RPI_ENABLE_MANUAL_OVERCLOCKING enabled, ignoring..."
         true
     fi
 }
