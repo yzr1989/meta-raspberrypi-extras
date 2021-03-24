@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=0e9db807e4f1ed14373059c8499d5f82"
 inherit cmake features_check python3native
 
 SRC_URI = "git://github.com/Yours3lf/rpi-vk-driver.git;protocol=https;branch=master"
-SRCREV = "39bb5f20e39185bf41a636a238437d55dc6ded5a"
+SRCREV = "6bfd11b1ccb947e4eb8d1665083d56d66707de01"
 S = "${WORKDIR}/git"
 
 PV = "1.0+git${SRCPV}"
