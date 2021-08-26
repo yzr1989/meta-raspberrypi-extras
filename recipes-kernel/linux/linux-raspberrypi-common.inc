@@ -8,7 +8,7 @@ SRC_URI = " \
     file://android-drivers.cfg \
     "
 
-SRC_URI_remove = "file://rpi-kernel-misc.cfg"
+SRC_URI:remove = "file://rpi-kernel-misc.cfg"
 
 require recipes-kernel/linux/linux-raspberrypi.inc
 

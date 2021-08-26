@@ -17,19 +17,19 @@ REQUIRED_DISTRO_FEATURES = "vulkan"
 OECMAKE_FIND_ROOT_PATH_MODE_PROGRAM = "BOTH"
 
 # todo add package flags
-EXTRA_OECMAKE_append = " \
+EXTRA_OECMAKE:append = " \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_VERBOSE_MAKEFILE=TRUE \
     -DCMAKE_SKIP_INSTALL_RPATH=ON \
     -DBUILD_TESTING=OFF \
 "
 
-FILES_${PN} = " \
+FILES:${PN} = " \
     ${libdir}/librpi-vk-driver.so \
     ${datadir}/vulkan/icd.d/rpi-vk-driver.json \
 "
 
-FILES_${PN}-dev  = " \
+FILES:${PN}-dev  = " \
     ${bindir}/QPUassemblerExe \
 "
 
@@ -56,14 +56,14 @@ PACKAGECONFIG[wayland] = "-DBUILD_WSI_WAYLAND_SUPPORT=ON, -DBUILD_WSI_WAYLAND_SU
 #  Compute Module 3+
 #  Compute Module 3+ lite
 
-COMPATIBLE_MACHINE_raspberrypi = "(.*)"
-COMPATIBLE_MACHINE_raspberrypi-cm = "(.*)"
-COMPATIBLE_MACHINE_raspberrypi-cm3 = "(.*)"
-COMPATIBLE_MACHINE_raspberrypi0 = "(.*)"
-COMPATIBLE_MACHINE_raspberrypi0-wifi = "(.*)"
-COMPATIBLE_MACHINE_raspberrypi2 = "(.*)"
-COMPATIBLE_MACHINE_raspberrypi3 = "(.*)"
-COMPATIBLE_MACHINE_raspberrypi3-64 = "(.*)"
+COMPATIBLE_MACHINE:raspberrypi = "(.*)"
+COMPATIBLE_MACHINE:raspberrypi-cm = "(.*)"
+COMPATIBLE_MACHINE:raspberrypi-cm3 = "(.*)"
+COMPATIBLE_MACHINE:raspberrypi0 = "(.*)"
+COMPATIBLE_MACHINE:raspberrypi0-wifi = "(.*)"
+COMPATIBLE_MACHINE:raspberrypi2 = "(.*)"
+COMPATIBLE_MACHINE:raspberrypi3 = "(.*)"
+COMPATIBLE_MACHINE:raspberrypi3-64 = "(.*)"
 
 # It is not compatible with raspberrypi4 (Video Core VI) chipsets 
 COMPATIBLE_MACHINE = "(!.*)"

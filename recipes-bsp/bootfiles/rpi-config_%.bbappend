@@ -25,7 +25,7 @@ write_cfg() {
     echo "${1}" >> ${RPI_CONFIG_FILE}
 }
 
-do_deploy_append() {
+do_deploy:append() {
     local configfile=${DEPLOYDIR}/${BOOTFILES_DIR_NAME}/config.txt
 
     if [ "${DISABLE_BLUETOOTH}" = "1" ]; then
